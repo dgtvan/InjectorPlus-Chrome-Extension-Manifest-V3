@@ -6,7 +6,7 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-gulp.task('chrome-watch', function () {
+gulp.task('chrome-watch', function (done) {
     const WEB_SOCKET_PORT = 8890;
 
     const server = http.createServer();
