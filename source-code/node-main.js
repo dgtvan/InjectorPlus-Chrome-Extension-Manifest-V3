@@ -1,0 +1,1 @@
+console.log('Hello, Van Injector Plus is running');
