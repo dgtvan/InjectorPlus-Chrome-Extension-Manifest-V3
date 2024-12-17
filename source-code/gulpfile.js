@@ -6,18 +6,35 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-gulp.task('chrome-watch', function (done) {
+gulp.task('watch', function (done) {
     const WEB_SOCKET_PORT = 8890;
 
-    const server = http.createServer();
-    io(server);
+    const log = (message) => {
+        console.log('Auo reload. ' + message);
+    };
 
-    server.listen(WEB_SOCKET_PORT, () => {
-        console.log('Socket.IO server running on port 3000');
+    const server = http.createServer();
+    const reloadSocket = io(server, {
+        transports: ['websocket'],
+        cors: {
+            origin: "*",
+        }
+    });
+
+    reloadSocket.listen(WEB_SOCKET_PORT, () => {
+        log('Running on port ' + WEB_SOCKET_PORT);
 
         // watch('**/*.*', function (file) {
         //     io.emit('file.change', {});
         // });
+    });
+
+    reloadSocket.on('connection', (socket) => {
+        log('Connected');
+
+        socket.on('disconnect', () => {
+            log('Disconnected');
+        });
     });
 
     done();
