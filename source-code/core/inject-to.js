@@ -5,5 +5,6 @@
 const injectTo = [
     'www.scrumpoker-online.org',
     //'www.tiktok.com',
-    'employersmutual.atlassian.net'
+    'employersmutual.atlassian.net',
+    'omegle.fun',
 ];
