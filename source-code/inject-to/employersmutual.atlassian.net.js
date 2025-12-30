@@ -42,8 +42,8 @@
                 continue;
             }
 
-            const isTodoOrDone = (i === 0 || i === cardGroups.length - 1);
-            if (isTodoOrDone) {
+            const isDone = (i === cardGroups.length - 1 /*Done*/);
+            if (isDone) {
                 continue;
             }
 
